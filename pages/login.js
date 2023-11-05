@@ -1,9 +1,15 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import SEO from "@/components/SEO";
 import { FaGoogle } from "react-icons/fa"
 
 export default function Login() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -32,7 +38,7 @@ export default function Login() {
             <p className="text-black/50 mb-4 text-center ">
             Please login to your account
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="username"
@@ -45,8 +51,8 @@ export default function Login() {
                   id="email"
                   className="w-full border text-sm font-popin border-gray-300 p-2 rounded"
                   placeholder="Enter Email"
-                //   value={username}
-                //   onChange={(e) => setUsername(e.target.value)}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -62,8 +68,8 @@ export default function Login() {
                   id="password"
                   className="w-full border text-sm font-popin border-gray-300 p-2 rounded"
                   placeholder="Enter Password"
-                //   value={password}
-                //   onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </div>
