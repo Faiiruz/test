@@ -26,29 +26,29 @@ export default function Login() {
               alt="Sanur"
               width={150}
               height={100}
-              className="mb-5"
+              // className="mb-5"
             />
           </div>
           <div className="mb-5">
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-2 ">Exuberance</h2>
+              <h2 className="text-3xl font-bold mb-1">Exuberance</h2>
             </div>
-            <p className="text-black/50 mb-4 text-center ">
+            <p className="text-black/50 mb-5 text-center ">
               Please login to your account
             </p>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="username"
-                  className="text-gray-600 font-popin mb-2"
+                  className="text-gray-600 font-popin mb-2 ml-2"
                 >
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded"
-                  placeholder="Enter Password"
+                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded-2xl focus:outline outline-2 focus:shadow-md"
+                  placeholder="Enter Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -57,15 +57,16 @@ export default function Login() {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="font-popin text-gray-600 mb-2"
+                  className="font-popin text-gray-600 mb-2 ml-2"
                 >
                   Password
                 </label>
                 <input
+                  autoComplete="off"
                   type="password"
                   id="password"
-                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded mb-5"
-                  placeholder="Enter Your Email"
+                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded-2xl focus:outline outline-2 focus:shadow-md mb-7"
+                  placeholder="Enter Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
