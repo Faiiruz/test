@@ -3,7 +3,7 @@ import Link from "next/link";
 const Navbar = () => {
   // Gantilah dengan informasi pengguna yang sesuai
   const user = {
-    name: "User",
+    name: "John Doe",
     avatar: "/image/pp.png",
   };
 
@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex justify-end items-center">
         <div className="flex items-center">
-          <span className="text-white">{user.name}</span>
+          <span className="text-white">Welcome, <span className="font-bold">{user.name}</span></span>
           <img
             src={user.avatar}
             alt={user.name}
