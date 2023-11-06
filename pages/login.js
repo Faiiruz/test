@@ -61,12 +61,12 @@ export default function Login() {
                   htmlFor="password"
                   className="font-popin text-gray-600 mb-2"
                 >
-                  Password
+                  Password 
                 </label>
                 <input
                   type="password"
                   id="password"
-                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded"
+                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded mb-5"
                   placeholder="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
