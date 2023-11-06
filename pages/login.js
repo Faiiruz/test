@@ -44,13 +44,13 @@ export default function Login() {
                   htmlFor="username"
                   className="text-gray-600 font-popin mb-2"
                 >
-                  Email
+                  Password
                 </label>
                 <input
                   type="email"
                   id="email"
                   className="w-full border text-sm font-popin border-gray-300 p-2 rounded"
-                  placeholder="Enter Email"
+                  placeholder="Enter Password"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -61,13 +61,13 @@ export default function Login() {
                   htmlFor="password"
                   className="font-popin text-gray-600 mb-2"
                 >
-                  Password 
+                  Email 
                 </label>
                 <input
                   type="password"
                   id="password"
                   className="w-full border text-sm font-popin border-gray-300 p-2 rounded mb-5"
-                  placeholder="Enter Password"
+                  placeholder="Enter Your Email"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
