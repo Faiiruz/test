@@ -1,11 +1,11 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import SEO from "@/components/SEO";
-import { FaGoogle } from "react-icons/fa"
+import { FaGoogle } from "react-icons/fa";
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <>
-      <SEO title="Exuberance"/>
+      <SEO title="Exuberance" />
       <div
         className="flex justify-center items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: `url("/image/background.jpeg")` }}
@@ -31,12 +31,10 @@ export default function Login() {
           </div>
           <div className="mb-5">
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-2 ">
-              Exuberance
-              </h2>
+              <h2 className="text-3xl font-bold mb-2 ">Exuberance</h2>
             </div>
             <p className="text-black/50 mb-4 text-center ">
-            Please login to your account
+              Please login to your account
             </p>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
@@ -44,7 +42,7 @@ export default function Login() {
                   htmlFor="username"
                   className="text-gray-600 font-popin mb-2"
                 >
-                  Password
+                  Email
                 </label>
                 <input
                   type="email"
@@ -61,7 +59,7 @@ export default function Login() {
                   htmlFor="password"
                   className="font-popin text-gray-600 mb-2"
                 >
-                  Email 
+                  Password
                 </label>
                 <input
                   type="password"
@@ -73,7 +71,7 @@ export default function Login() {
                   required
                 />
               </div>
-            
+
               <button
                 type="submit"
                 className="w-full bg-blue-500 text-white p-2 rounded font-popin hover:bg-blue-600 transition duration-300"
@@ -81,13 +79,9 @@ export default function Login() {
                 Login
               </button>
             </form>
-            <h2 className="font-semibold text-xl text-center">
-                or
-            </h2>
+            <h2 className="font-semibold text-xl text-center">or</h2>
             <div className="flex flex-col">
-              <button
-                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 bg-red-500 text-white hover:bg-red-600 mt-2"
-              >
+              <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 bg-red-500 text-white hover:bg-red-600 mt-2">
                 <FaGoogle className="mr-2" /> Login with Google
               </button>
             </div>
