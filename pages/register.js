@@ -2,8 +2,9 @@ import Image from "next/image";
 import React, { useState } from "react";
 import SEO from "@/components/SEO";
 import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -85,15 +86,15 @@ export default function Login() {
                 <FaGoogle className="mr-2" />
                 Register with Google
               </button>
-              <p className="text-sm text-center font-5 font-popin">
+              <div className="text-sm text-center font-5 font-popin">
                 Have an Account?{" "}
-                <a
+                <Link
                   className="font-bold underline decoration-solid"
-                  href="login"
+                  href="/login"
                 >
                   Login
-                </a>
-              </p>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

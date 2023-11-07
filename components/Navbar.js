@@ -11,7 +11,7 @@ const Navbar = () => {
     <nav className="bg-blue-500 p-4">
       <div className="container mx-auto flex justify-end items-center">
         <div className="flex items-center">
-          <span className="text-white">Welcome, <span className="font-bold">{user.name}</span></span>
+          <span  className="font-bold">{user.name}</span>
           <img
             src={user.avatar}
             alt={user.name}

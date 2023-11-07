@@ -3,7 +3,8 @@ import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { TbWorldSearch } from "react-icons/tb";
 import { MdOutlineMarkunreadMailbox } from "react-icons/md";
-import { BsArrowLeftShort } from "react-icons/bs";
+import {IoIosArrowBack} from "react-icons/io"
+import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
@@ -18,8 +19,8 @@ const Sidebar = () => {
       }  h-screen bg-[#172882] duration-300 relative`}
     >
       <div className="p-4 text-white">
-        <BsArrowLeftShort
-          className={`text-3xl bg-black rounded-full absolute -right-3 top-9 cursor-pointer ${
+        <IoIosArrowBack
+          className={`text-3xl bg-black rounded-full absolute -right-3 top-9 cursor-pointer duration-300 ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -31,7 +32,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${
+              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
                 router.pathname === "/" ? "bg-white text-black" : ""
               }`}
             >
@@ -42,7 +43,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/email-phishing"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${
+              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
                 router.pathname === "/email-phishing"
                   ? "bg-white text-black"
                   : ""
@@ -57,7 +58,7 @@ const Sidebar = () => {
           <li>
             <Link
               href="/url-phishing"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${
+              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
                 router.pathname === "/url-phishing" ? "bg-white text-black" : ""
               }`}
             >
@@ -67,6 +68,17 @@ const Sidebar = () => {
               </span>
             </Link>
           </li>
+          <div>
+          <Link
+              href="/login"
+              className={`flex gap-3 font-popin items-center p-2 rounded mt-[340px] ${!open && "mr-4 mt-[420px]"} `}
+            >
+              <BiLogOut />
+              <span className={`flex-1 ${!open && "hidden"}`}>
+                Logout
+              </span>
+            </Link>
+          </div>
         </ul>
       </div>
     </div>

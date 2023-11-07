@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import SEO from "@/components/SEO";
 import { FaGoogle } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -84,9 +85,9 @@ export default function Login() {
                 <FaGoogle className="mr-2" /> 
                 Login with Google
               </button>
-              <p className="text-sm text-center font-5 font-popin">
-                Dont Have an Account? <a className="font-bold underline decoration-solid" href="register">Register</a>
-              </p>
+              <div className="text-sm text-center font-5 font-popin">
+                Dont Have an Account? <Link className="font-bold underline decoration-solid" href="/register">Register</Link>
+              </div>
             </div>
           </div>
         </div>
