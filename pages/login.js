@@ -19,7 +19,7 @@ export default function Login() {
         style={{ backgroundImage: `url("/image/background.jpeg")` }}
       >
         {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
-        <div className="w-96 container py-5 px-10 bg-white rounded-lg shadow-md relative">
+        <div className="w-96 container py-5 px-10 bg-white rounded-[25px] shadow-md relative">
           <div className="flex items-center justify-center">
             <Image
               src="/image/OIG1.png"
@@ -31,23 +31,24 @@ export default function Login() {
           </div>
           <div className="mb-5">
             <div className="text-center">
-              <h2 className="text-3xl font-bold mb-1">Exuberance</h2>
+              <h2 className="text-2xl font-bold mb-1">
+                Exuberance
+              </h2>
             </div>
-            <p className="text-black/50 mb-5 text-center ">
+            <p className="text-sm mb-10 text-center font-5 font-popin">
               Please login to your account
             </p>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="username"
-                  className="text-gray-600 font-popin mb-2 ml-2"
-                >
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
                   Email
                 </label>
                 <input
                   type="email"
                   id="email"
-                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded-2xl focus:outline outline-2 focus:shadow-md"
+                  className="w-full border-transparent mt-1 mb-1 text-sm opacity-70 font-thin font-popin bg-[#F3F3F3] p-2 rounded-2xl focus:outline outline-2 focus:shadow-md"
                   placeholder="Enter Your Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -57,15 +58,14 @@ export default function Login() {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="font-popin text-gray-600 mb-2 ml-2"
-                >
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
                   Password
                 </label>
                 <input
                   autoComplete="off"
                   type="password"
                   id="password"
-                  className="w-full border text-sm font-popin border-gray-300 p-2 rounded-2xl focus:outline outline-2 focus:shadow-md mb-7"
+                  className="w-full border-transparent mt-1 text-sm opacity-70 font-thin font-popin bg-[#F3F3F3] p-2 rounded-2xl focus:outline outline-2 focus:shadow-md"
                   placeholder="Enter Your Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -75,15 +75,14 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full bg-blue-500 text-white p-2 rounded font-popin hover:bg-blue-600 transition duration-300"
-              >
+                className="w-full bg-gray-500 text-black p-2 rounded-full mt-5 font-popin hover:bg-gray-100 transition duration-300">
                 Login
               </button>
             </form>
-            <h2 className="font-semibold text-xl text-center">or</h2>
             <div className="flex flex-col">
               <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 bg-red-500 text-white hover:bg-red-600 mt-2">
-                <FaGoogle className="mr-2" /> Login with Google
+                <FaGoogle className="mr-2" /> 
+                Login with Google
               </button>
             </div>
           </div>
