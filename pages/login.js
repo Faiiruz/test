@@ -3,13 +3,51 @@ import React, { useState } from "react";
 import SEO from "@/components/SEO";
 import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isLoading) {
+      return;
+    }
+
+    setIsLoading(true);
+
+    const data = {
+      email: email,
+      password: password
+    };
+
+    try {
+      const response = await axios.post("http://localhost:9000/connection/exuberance/login", data);
+
+      if (response.data && response.data.response && response.data.response.token) {
+        const token = response.data.response.token;
+
+        localStorage.setItem("token", token);
+
+        router.push("http://localhost:8500");
+      }
+
+      console.log("Login successful!", response.data);
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.response && error.response.data.response.message) {
+        setError(error.response.data.response.message);
+      } else {
+        setError("An error occurred. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -19,7 +57,6 @@ export default function Login() {
         className="flex justify-center items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: `url("/image/background.jpeg")` }}
       >
-        {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
         <div className="w-96 container py-5 px-10 bg-white rounded-[25px] shadow-md relative">
           <div className="flex items-center justify-center">
             <Image
@@ -27,14 +64,11 @@ export default function Login() {
               alt="Sanur"
               width={150}
               height={100}
-              // className="mb-5"
             />
           </div>
           <div className="mb-5">
             <div className="text-center">
-              <h2 className="text-2xl font-bold mb-1">
-                Exuberance
-              </h2>
+              <h2 className="text-2xl font-bold mb-1">Exuberance</h2>
             </div>
             <p className="text-sm mb-8 text-center font-5 font-popin">
               Please Login to Your Account
@@ -43,7 +77,8 @@ export default function Login() {
               <div className="mb-4">
                 <label
                   htmlFor="username"
-                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2"
+                >
                   Email
                 </label>
                 <input
@@ -59,7 +94,8 @@ export default function Login() {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2"
+                >
                   Password
                 </label>
                 <input
@@ -76,17 +112,31 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full bg-white border border-black text-black p-2 rounded-full mt-5 font-popin hover:bg-gray-100 hover:border-transparent transition duration-300">
-                Login
+                className={`w-full p-2 rounded-full mt-5 font-popin ${
+                  isLoading
+                    ? "bg-black text-white cursor-not-allowed"
+                    : "bg-white border border-black text-black hover:text-white hover:bg-black hover:border-transparent"
+                }`}
+                disabled={isLoading}
+              >
+                {isLoading ? "Logging in..." : "Login"}
               </button>
+              {error && (
+                <div className="text-center text-red-500 font-bold mt-4">
+                  {error}
+                </div>
+              )}
             </form>
             <div className="flex flex-col">
               <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover:bg-red-600 mt-2">
-                <FaGoogle className="mr-2" /> 
+                <FaGoogle className="mr-2" />
                 Login with Google
               </button>
               <div className="text-sm text-center font-5 font-popin">
-                Dont Have an Account? <Link className="font-bold underline decoration-solid" href="/register">Register</Link>
+                Don't Have an Account?{" "}
+                <Link className="font-bold underline decoration-solid" href="/register">
+                  Register
+                </Link>
               </div>
             </div>
           </div>

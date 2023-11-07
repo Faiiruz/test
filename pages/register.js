@@ -1,15 +1,42 @@
-import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import SEO from "@/components/SEO";
 import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Register() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const data = {
+      email: email,
+      password: password,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:9000/connection/exuberance/register",
+        data
+      );
+
+      console.log("Registration response:", response.data);
+
+      if (response.data.response.status_code === 200) {
+        const { id, token } = response.data.response.data;
+        localStorage.setItem("id", id);
+        localStorage.setItem("token", token);
+        router.push(`/verification?id=${id}`);
+      } else {
+        console.error("Registration failed:", response.data.response.message);
+      }
+    } catch (error) {
+      console.error("Registration failed", error);
+    }
   };
 
   return (
@@ -19,15 +46,13 @@ export default function Register() {
         className="flex justify-center items-center h-screen bg-cover bg-center"
         style={{ backgroundImage: `url("/image/background.jpeg")` }}
       >
-        {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
         <div className="w-96 container py-5 px-10 bg-white rounded-[25px] shadow-md relative">
           <div className="flex items-center justify-center">
-            <Image
+            <img
               src="/image/OIG1.png"
               alt="Sanur"
               width={150}
               height={100}
-              // className="mb-5"
             />
           </div>
           <div className="mb-5">
@@ -40,7 +65,7 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
-                  htmlFor="username"
+                  htmlFor="email"
                   className="font-popin font-thin text-black-600 text-sm mb-2 ml-2"
                 >
                   Email
@@ -82,7 +107,7 @@ export default function Register() {
               </button>
             </form>
             <div className="flex flex-col">
-              <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover:bg-red-600 mt-2">
+              <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover-bg-red-600 mt-2">
                 <FaGoogle className="mr-2" />
                 Register with Google
               </button>
