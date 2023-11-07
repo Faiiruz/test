@@ -31,18 +31,17 @@ export default function Login() {
           </div>
           <div className="mb-5">
             <div className="text-center">
-              <h2 className="text-2xl font-bold mb-1">
-                Exuberance
-              </h2>
+              <h2 className="text-2xl font-bold mb-1">Exuberance</h2>
             </div>
             <p className="text-sm mb-8 text-center font-5 font-popin">
-              Please Login to Your Account
+              Create Your Account
             </p>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label
                   htmlFor="username"
-                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2"
+                >
                   Email
                 </label>
                 <input
@@ -58,7 +57,8 @@ export default function Login() {
               <div className="mb-4">
                 <label
                   htmlFor="password"
-                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2">
+                  className="font-popin font-thin text-black-600 text-sm mb-2 ml-2"
+                >
                   Password
                 </label>
                 <input
@@ -75,17 +75,24 @@ export default function Login() {
 
               <button
                 type="submit"
-                className="w-full bg-white border border-black text-black p-2 rounded-full mt-5 font-popin hover:bg-gray-100 hover:border-transparent transition duration-300">
-                Login
+                className="w-full bg-white border border-black text-black p-2 rounded-full mt-5 font-popin hover:bg-gray-100 hover:border-transparent transition duration-300"
+              >
+                Register
               </button>
             </form>
             <div className="flex flex-col">
               <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover:bg-red-600 mt-2">
-                <FaGoogle className="mr-2" /> 
-                Login with Google
+                <FaGoogle className="mr-2" />
+                Register with Google
               </button>
               <p className="text-sm text-center font-5 font-popin">
-                Dont Have an Account? <a className="font-bold underline decoration-solid" href="register">Register</a>
+                Have an Account?{" "}
+                <a
+                  className="font-bold underline decoration-solid"
+                  href="login"
+                >
+                  Login
+                </a>
               </p>
             </div>
           </div>
