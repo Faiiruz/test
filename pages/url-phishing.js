@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import React from "react";
+import { getSession, signOut, useSession } from "next-auth/react";
 
 export default function Url() {
   return (
@@ -12,3 +13,18 @@ export default function Url() {
     </>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+};

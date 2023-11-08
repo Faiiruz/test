@@ -4,11 +4,17 @@ import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useSession, signIn } from "next-auth/react";
 
 export default function Register() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { data: session } = useSession();
+
+  if (session) {
+    router.push("/");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -48,12 +54,7 @@ export default function Register() {
       >
         <div className="w-96 container py-5 px-10 bg-white rounded-[25px] shadow-md relative">
           <div className="flex items-center justify-center">
-            <img
-              src="/image/OIG1.png"
-              alt="Sanur"
-              width={150}
-              height={100}
-            />
+            <img src="/image/OIG1.png" alt="Sanur" width={150} height={100} />
           </div>
           <div className="mb-5">
             <div className="text-center">
@@ -107,7 +108,10 @@ export default function Register() {
               </button>
             </form>
             <div className="flex flex-col">
-              <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover-bg-red-600 mt-2">
+              <button
+                onClick={() => signIn("google")}
+                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover-bg-red-600 mt-2"
+              >
                 <FaGoogle className="mr-2" />
                 Register with Google
               </button>

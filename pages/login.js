@@ -5,6 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useSession, signIn } from "next-auth/react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -12,6 +13,11 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { data: session } = useSession();
+
+  if (session) {
+    router.push("/");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,13 +30,20 @@ export default function Login() {
 
     const data = {
       email: email,
-      password: password
+      password: password,
     };
 
     try {
-      const response = await axios.post("http://localhost:9000/connection/exuberance/login", data);
+      const response = await axios.post(
+        "http://localhost:9000/connection/exuberance/login",
+        data
+      );
 
-      if (response.data && response.data.response && response.data.response.token) {
+      if (
+        response.data &&
+        response.data.response &&
+        response.data.response.token
+      ) {
         const token = response.data.response.token;
 
         localStorage.setItem("token", token);
@@ -40,7 +53,12 @@ export default function Login() {
 
       console.log("Login successful!", response.data);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.response && error.response.data.response.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.response &&
+        error.response.data.response.message
+      ) {
         setError(error.response.data.response.message);
       } else {
         setError("An error occurred. Please try again.");
@@ -59,12 +77,7 @@ export default function Login() {
       >
         <div className="w-96 container py-5 px-10 bg-white rounded-[25px] shadow-md relative">
           <div className="flex items-center justify-center">
-            <Image
-              src="/image/OIG1.png"
-              alt="Sanur"
-              width={150}
-              height={100}
-            />
+            <Image src="/image/OIG1.png" alt="Sanur" width={150} height={100} />
           </div>
           <div className="mb-5">
             <div className="text-center">
@@ -128,13 +141,19 @@ export default function Login() {
               )}
             </form>
             <div className="flex flex-col">
-              <button className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover:bg-red-600 mt-2">
+              <button
+                onClick={() => signIn("google")}
+                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover:bg-red-600 mt-2"
+              >
                 <FaGoogle className="mr-2" />
                 Login with Google
               </button>
               <div className="text-sm text-center font-5 font-popin">
-                Don't Have an Account?{" "}
-                <Link className="font-bold underline decoration-solid" href="/register">
+                Dont Have an Account?{" "}
+                <Link
+                  className="font-bold underline decoration-solid"
+                  href="/register"
+                >
                   Register
                 </Link>
               </div>

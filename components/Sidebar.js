@@ -3,14 +3,20 @@ import Link from "next/link";
 import { RxDashboard } from "react-icons/rx";
 import { TbWorldSearch } from "react-icons/tb";
 import { MdOutlineMarkunreadMailbox } from "react-icons/md";
-import {IoIosArrowBack} from "react-icons/io"
+import { IoIosArrowBack } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
+
+  const handleLogout = async () => {
+    await signOut();
+    router.push("/login");
+  };
 
   return (
     <div
@@ -32,9 +38,9 @@ const Sidebar = () => {
           <li>
             <Link
               href="/"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
-                router.pathname === "/" ? "bg-white text-black" : ""
-              }`}
+              className={`flex gap-3 font-popin items-center p-2 rounded ${
+                !open && "mr-4"
+              } ${router.pathname === "/" ? "bg-white text-black" : ""}`}
             >
               <RxDashboard />
               <span className={`flex-1 ${!open && "hidden"}`}>Dashboard</span>
@@ -43,7 +49,9 @@ const Sidebar = () => {
           <li>
             <Link
               href="/email-phishing"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
+              className={`flex gap-3 font-popin items-center p-2 rounded ${
+                !open && "mr-4"
+              } ${
                 router.pathname === "/email-phishing"
                   ? "bg-white text-black"
                   : ""
@@ -58,7 +66,9 @@ const Sidebar = () => {
           <li>
             <Link
               href="/url-phishing"
-              className={`flex gap-3 font-popin items-center p-2 rounded ${!open && "mr-4"} ${
+              className={`flex gap-3 font-popin items-center p-2 rounded ${
+                !open && "mr-4"
+              } ${
                 router.pathname === "/url-phishing" ? "bg-white text-black" : ""
               }`}
             >
@@ -69,14 +79,15 @@ const Sidebar = () => {
             </Link>
           </li>
           <div>
-          <Link
+            <Link
+              onClick={handleLogout}
               href="/login"
-              className={`flex gap-3 font-popin items-center p-2 rounded mt-[340px] ${!open && "mr-4 mt-[420px]"} `}
+              className={`flex gap-3 font-popin items-center p-2 rounded mt-[340px] ${
+                !open && "mr-4 mt-[420px]"
+              } `}
             >
               <BiLogOut />
-              <span className={`flex-1 ${!open && "hidden"}`}>
-                Logout
-              </span>
+              <span className={`flex-1 ${!open && "hidden"}`}>Logout</span>
             </Link>
           </div>
         </ul>
