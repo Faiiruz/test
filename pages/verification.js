@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 
 export default function Verification() {
   const router = useRouter();
-  const [result, setResult] = useState("");
   const [otp, setOtp] = useState("");
   const [createdBy, setCreatedBy] = useState("");
 
@@ -23,24 +22,20 @@ export default function Verification() {
     }
   }, [router.query]);
 
-  const handleOnChange = (res) => {
-    setResult(res);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     const data = {
       createdby: parseInt(createdBy),
       otp_code: parseInt(otp),
     };
-  
+
     try {
       const response = await axios.post(
         "http://localhost:9000/connection/exuberance/register/verifotp",
         data
       );
-  
+
       if (response.data.status_code === 200) {
         console.log("OTP verification successful");
         window.location.href = "http://localhost:8500";
@@ -70,7 +65,11 @@ export default function Verification() {
             <p className="text-sm mb-8 text-center font-5 font-popin">
               Check Your Gmail
             </p>
-            <form onSubmit={handleSubmit} action="http://localhost:9000/connection/exuberance/register/verifotp" method="POST">
+            <form
+              onSubmit={handleSubmit}
+              action="http://localhost:9000/connection/exuberance/register/verifotp"
+              method="POST"
+            >
               <div className="justify-center items-center flex flex-row mb-10">
                 <AuthCode
                   inputClassName="border-b-2 border-black focus:outline-0 text-center w-10"
