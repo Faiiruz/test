@@ -37,12 +37,13 @@ export default function Url() {
       <Layout>
         <div className="text-4xl font-popin font-semibold">Url Phising</div>
         <div className="mt-7">
-          <textarea
+          <input
             className="px-5 w-full py-5 border-slate-950 border bg-gray-200"
-            name="url-bar"
-            cols={125}
-            rows={1}
-            autoFocus={true}
+            // name="url-bar"
+            // cols={125}
+            // rows={1}
+            // autoFocus={true}
+            type="text"
             placeholder="Enter your URL here"
           />
         </div>
