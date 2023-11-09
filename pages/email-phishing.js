@@ -1,10 +1,47 @@
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
-import React from "react";
+import React, { useState } from "react";
 import { getSession } from "next-auth/react";
 import { FaSearch } from "react-icons/fa";
+import { emailPhising } from "@/components/data/data";
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 
 export default function Email() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
+  const filteredApps = emailPhising.filter((app) =>
+    app.status.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const getStatusTextColor = (status) => {
+    if (status === "Phising Email") {
+      return "bg-red-500"; // Ganti dengan kelas warna teks yang sesuai
+    } else if (status === "Safe Email") {
+      return "bg-lime-500"; // Ganti dengan kelas warna teks yang sesuai
+    } else if (status === "Potentially Phishing") {
+      return "bg-amber-500"; // Ganti dengan kelas warna teks yang sesuai
+    }
+  };
+
+  // Hitung jumlah halaman
+  const totalPages = Math.ceil(filteredApps.length / itemsPerPage);
+
+  // Membuat array untuk menampilkan item pada halaman saat ini
+  const displayedApps = filteredApps.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
   return (
     <>
       <SEO title="Exuberance" />
@@ -14,42 +51,59 @@ export default function Email() {
           <input
             type="text"
             placeholder="Search Apps..."
-            // value={searchQuery}
-            // onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             className="form-input py-2 w-full px-3 block pl-10 sm:text-sm sm:leading-5"
           />
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FaSearch className="h-5 w-5 text-gray-400" />
           </div>
         </div>
+        <div className="flex mt-4 justify-end">
+          <button
+            onClick={goToPreviousPage}
+            disabled={currentPage === 1}
+            className="mr-2"
+          >
+            <AiOutlineLeft />
+          </button>
+          <div>
+            Page {currentPage} of {totalPages}
+          </div>
+          <button
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+            className="ml-2"
+          >
+            <AiOutlineRight />
+          </button>
+        </div>
         <table className="bg-white mt-5 w-full">
           <thead>
             <tr className="text-left text-md text-slate-700">
               <th className="py-2 px-4 border-b w-1/6">Date Email</th>
-              <th className="py-2 px-4 border-b">Sender Email</th>
+              <th className="py-2 px-4 border-b w-1/5">Sender Email</th>
               <th className="py-2 px-4 border-b">Body Email</th>
-              <th className="py-2 px-4 border-b">Status</th>
+              <th className="py-2 px-4 border-b w-1/6">Status</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="text-sm text-slate-700">
-              <td className="py-2 px-4 border-b">7/Nov/2023</td>
-              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
-              <td className="py-2 px-4 border-b">lorem</td>
-              <td className="py-2 px-4 border-b bg-red-500">Phishing Email</td>
-            </tr>
-            <tr className="text-sm text-slate-700">
-              <td className="py-2 px-4 border-b">7/Nov/2023</td>
-              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
-              <td className="py-2 px-4 border-b">lorem ipsum</td>
-              <td className="py-2 px-4 border-b bg-amber-500">Potentially Phishing</td>
-            </tr>
-            <tr className="text-sm text-slate-700">
-              <td className="py-2 px-4 border-b">7/Nov/2023</td>
-              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
-              <td className="py-2 px-4 border-b">lorem ipsum dolor sit amet</td>
-              <td className="py-2 px-4 border-b bg-lime-500">Safe Email</td>
-            </tr>
+            {displayedApps.map((app) => (
+              <tr key={app.id} className="text-sm">
+                <td className="py-2 px-4 border-b">{app.date}</td>
+                <td className="py-2 px-4 border-b">{app.email}</td>
+                <td className="py-2 px-4 border-b">{app.body}</td>
+                <td className={`py-2 px-4 border-b`}>
+                  <div
+                    className={`rounded-full text-white text-center ${getStatusTextColor(
+                      app.status
+                    )} `}
+                  >
+                    {app.status}
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </Layout>
