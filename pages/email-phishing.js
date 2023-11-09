@@ -33,10 +33,22 @@ export default function Email() {
           </thead>
           <tbody>
             <tr className="text-sm text-slate-700">
-              <td className="py-2 px-4 border-b">asdasdad</td>
-              <td className="py-2 px-4 border-b">asdasda</td>
-              <td className="py-2 px-4 border-b">adasdad</td>
-              <td className="py-2 px-4 border-b">sadxzcasd</td>
+              <td className="py-2 px-4 border-b">7/Nov/2023</td>
+              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
+              <td className="py-2 px-4 border-b">lorem</td>
+              <td className="py-2 px-4 border-b bg-red-500">Phishing Email</td>
+            </tr>
+            <tr className="text-sm text-slate-700">
+              <td className="py-2 px-4 border-b">7/Nov/2023</td>
+              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
+              <td className="py-2 px-4 border-b">lorem ipsum</td>
+              <td className="py-2 px-4 border-b bg-amber-500">Potentially Phishing</td>
+            </tr>
+            <tr className="text-sm text-slate-700">
+              <td className="py-2 px-4 border-b">7/Nov/2023</td>
+              <td className="py-2 px-4 border-b">hotdaddy@yahoo.uk</td>
+              <td className="py-2 px-4 border-b">lorem ipsum dolor sit amet</td>
+              <td className="py-2 px-4 border-b bg-lime-500">Safe Email</td>
             </tr>
           </tbody>
         </table>
