@@ -9,22 +9,16 @@ export default function Url() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  // const filteredApps = urlPhising.filter((app) =>
-  //   app.status.toLowerCase().includes(searchQuery.toLowerCase())
-  // );
-
   const getStatusTextColor = (status) => {
     if (status === "Phising") {
-      return "text-red-500"; // Ganti dengan kelas warna teks yang sesuai
+      return "text-red-500";
     } else if (status === "Safe") {
-      return "text-lime-500"; // Ganti dengan kelas warna teks yang sesuai
+      return "text-lime-500";
     }
   };
 
-  // Hitung jumlah halaman
   const totalPages = Math.ceil(urlPhising.length / itemsPerPage);
 
-  // Membuat array untuk menampilkan item pada halaman saat ini
   const displayedApps = urlPhising.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage

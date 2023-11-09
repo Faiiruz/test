@@ -17,18 +17,16 @@ export default function Email() {
 
   const getStatusTextColor = (status) => {
     if (status === "Phising Email") {
-      return "bg-red-500"; // Ganti dengan kelas warna teks yang sesuai
+      return "bg-red-500";
     } else if (status === "Safe Email") {
-      return "bg-lime-500"; // Ganti dengan kelas warna teks yang sesuai
+      return "bg-lime-500";
     } else if (status === "Potentially Phishing") {
-      return "bg-amber-500"; // Ganti dengan kelas warna teks yang sesuai
+      return "bg-amber-500";
     }
   };
 
-  // Hitung jumlah halaman
   const totalPages = Math.ceil(filteredApps.length / itemsPerPage);
 
-  // Membuat array untuk menampilkan item pada halaman saat ini
   const displayedApps = filteredApps.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
