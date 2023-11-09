@@ -93,7 +93,7 @@ export default function Email() {
                 <td className="py-2 px-4 border-b">{app.body}</td>
                 <td className={`py-2 px-4 border-b`}>
                   <div
-                    className={`rounded-full text-white text-center ${getStatusTextColor(
+                    className={` text-white text-center ${getStatusTextColor(
                       app.status
                     )} `}
                   >

@@ -110,7 +110,7 @@ export default function Register() {
             <div className="flex flex-col">
               <button
                 onClick={() => signIn("google")}
-                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-red-500 text-white hover-bg-red-600 mt-2"
+                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-gradient-to-t from-[#172882] to-sky-400 text-white mt-2"
               >
                 <FaGoogle className="mr-2" />
                 Register with Google

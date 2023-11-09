@@ -47,7 +47,7 @@ export default function Url() {
           />
         </div>
         <div className="flex items-end justify-end mt-5">
-          <button className="flex flex-row items-center justify-center px-12 py-2 mb-5 bg-[#172882]/[.9] text-white hover:bg-[#172882] mt-2">
+          <button className="flex flex-row items-center justify-center px-12 py-2 mb-5 bg-gradient-to-t from-[#172882]  to-sky-400  text-white hover:bg-[#172882] mt-2">
             Check URL
           </button>
         </div>
