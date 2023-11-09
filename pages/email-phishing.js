@@ -82,6 +82,7 @@ export default function Email() {
               <th className="py-2 px-4 border-b w-1/6">Date Email</th>
               <th className="py-2 px-4 border-b w-1/5">Sender Email</th>
               <th className="py-2 px-4 border-b">Body Email</th>
+              <th className="py-2 px-4 border-b w-1/6">Persentase</th>
               <th className="py-2 px-4 border-b w-1/6">Status</th>
             </tr>
           </thead>
@@ -91,6 +92,7 @@ export default function Email() {
                 <td className="py-2 px-4 border-b">{app.date}</td>
                 <td className="py-2 px-4 border-b">{app.email}</td>
                 <td className="py-2 px-4 border-b">{app.body}</td>
+                <td className="py-2 px-4 border-b">{app.persen}</td>
                 <td className={`py-2 px-4 border-b`}>
                   <div
                     className={` text-white text-center ${getStatusTextColor(

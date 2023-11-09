@@ -4,6 +4,7 @@ export const emailPhising = [
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
     body: "lorem",
+    persen: "30%",
     status: "Phising Email",
   },
   {
@@ -11,6 +12,7 @@ export const emailPhising = [
     date: "8/Nov/2023",
     email: "apayasd@gmail.com",
     body: "lorem ipsu",
+    persen: "30%",
     status: "Potentially Phishing",
   },
   {
@@ -18,6 +20,7 @@ export const emailPhising = [
     date: "9/Nov/2023",
     email: "soasikda@gmail.com",
     body: "lorem ipsu iyain",
+    persen: "30%",
     status: "Safe Email",
   },
   {
@@ -25,6 +28,7 @@ export const emailPhising = [
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
     body: "lorem",
+    persen: "30%",
     status: "Phising Email",
   },
   {
@@ -32,6 +36,7 @@ export const emailPhising = [
     date: "8/Nov/2023",
     email: "apayasd@gmail.com",
     body: "lorem ipsu",
+    persen: "30%",
     status: "Potentially Phishing",
   },
   {
@@ -39,6 +44,7 @@ export const emailPhising = [
     date: "9/Nov/2023",
     email: "soasikda@gmail.com",
     body: "lorem ipsu iyain",
+    persen: "30%",
     status: "Safe Email",
   },
   {
@@ -46,6 +52,7 @@ export const emailPhising = [
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
     body: "lorem",
+    persen: "30%",
     status: "Phising Email",
   },
   {
@@ -53,6 +60,7 @@ export const emailPhising = [
     date: "8/Nov/2023",
     email: "apayasd@gmail.com",
     body: "lorem ipsu",
+    persen: "30%",
     status: "Potentially Phishing",
   },
   {
@@ -60,6 +68,7 @@ export const emailPhising = [
     date: "9/Nov/2023",
     email: "soasikda@gmail.com",
     body: "lorem ipsu iyain",
+    persen: "30%",
     status: "Safe Email",
   },
   {
@@ -67,6 +76,7 @@ export const emailPhising = [
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
     body: "lorem",
+    persen: "30%",
     status: "Phising Email",
   },
   {
@@ -74,6 +84,7 @@ export const emailPhising = [
     date: "8/Nov/2023",
     email: "apayasd@gmail.com",
     body: "lorem ipsu",
+    persen: "30%",
     status: "Potentially Phishing",
   },
   {
@@ -81,6 +92,7 @@ export const emailPhising = [
     date: "9/Nov/2023",
     email: "soasikda@gmail.com",
     body: "lorem ipsu iyain",
+    persen: "30%",
     status: "Safe Email",
   },
   {
@@ -88,6 +100,7 @@ export const emailPhising = [
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
     body: "lorem",
+    persen: "30%",
     status: "Phising Email",
   },
   {
@@ -95,6 +108,7 @@ export const emailPhising = [
     date: "8/Nov/2023",
     email: "apayasd@gmail.com",
     body: "lorem ipsu",
+    persen: "30%",
     status: "Potentially Phishing",
   },
   {
@@ -102,6 +116,7 @@ export const emailPhising = [
     date: "9/Nov/2023",
     email: "soasikda@gmail.com",
     body: "lorem ipsu iyain",
+    persen: "30%",
     status: "Safe Email",
   },
 ];
