@@ -44,7 +44,7 @@ const Navbar = () => {
               <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded shadow-lg">
                 <ul className="py-2">
                   <li className="px-4 py-2 hover:bg-gray-100">
-                    <p className="cursor-pointer font-popin">Change Password</p>
+                    <Link href="/changepassword" className="font-popin">Change Password</Link>
                   </li>
                 </ul>
               </div>
