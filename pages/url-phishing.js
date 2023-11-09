@@ -38,7 +38,7 @@ export default function Url() {
         <div className="text-4xl font-popin font-semibold">Url Phising</div>
         <div className="mt-7">
           <textarea
-            className="px-5 py-5 border-slate-950 border bg-gray-200"
+            className="px-5 w-full py-5 border-slate-950 border bg-gray-200"
             name="url-bar"
             cols={125}
             rows={1}
@@ -46,7 +46,7 @@ export default function Url() {
             placeholder="Enter your URL here"
           />
         </div>
-        <div className="flex flex-row-reverse mx-12 my-3">
+        <div className="flex items-end justify-end mt-5">
           <button className="flex flex-row items-center justify-center px-12 py-2 mb-5 bg-[#172882]/[.9] text-white hover:bg-[#172882] mt-2">
             Check URL
           </button>
