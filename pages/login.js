@@ -15,42 +15,51 @@ export default function Login() {
   const router = useRouter();
   const { data: session } = useSession();
 
-  if (session) {
-    router.push("/");
-  }
+  const handleGoogleLogin = async () => {
+    try {
+      const response = await axios.get("/api/google-login");
+      if (response.data && response.data.url) {
+        window.location = response.data.url;
+      }
+    } catch (error) {
+      console.error("Error initiating Google login:", error);
+      setError("An error occurred during Google login.");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (isLoading) {
       return;
     }
-
+  
     setIsLoading(true);
-
+  
     const data = {
       email: email,
       password: password,
     };
-
+  
     try {
       const response = await axios.post(
         "http://localhost:9000/connection/exuberance/login",
         data
       );
-
+  
       if (
         response.data &&
         response.data.response &&
         response.data.response.token
       ) {
         const token = response.data.response.token;
+  
+        document.cookie = `token=${token}; path=/`;
+  
 
-        localStorage.setItem("token", token);
-
-        router.push("http://localhost:8500");
+        window.location.href = "http://localhost:8500";
       }
-
+  
       console.log("Login successful!", response.data);
     } catch (error) {
       if (
@@ -141,13 +150,13 @@ export default function Login() {
               )}
             </form>
             <div className="flex flex-col">
-              <button
-                onClick={() => signIn("google")}
-                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-gradient-to-t from-[#172882] to-sky-400 text-white mt-2"
-              >
-                <FaGoogle className="mr-2" />
-                Login with Google
-              </button>
+            <button
+              onClick={handleGoogleLogin}
+              className="flex flex-row items-center justify-center rounded-full px-12 py-2 mb-5 bg-gradient-to-t from-[#172882] to-sky-400 text-white mt-2"
+            >
+              <FaGoogle className="mr-2" />
+              Login with Google
+            </button>
               <div className="text-sm text-center font-5 font-popin">
                 Dont Have an Account?{" "}
                 <Link

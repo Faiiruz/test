@@ -16,11 +16,17 @@ export default function Home() {
 export const getServerSideProps = async (context) => {
   const session = await getSession(context);
   if (!session) {
-    return {
-      redirect: {
-        destination: "/login",
-      },
-    };
+    const { req } = context;
+    const { cookies } = req;
+
+    if (!cookies.token) {
+      return {
+        redirect: {
+          destination: "/login",
+          permanent: false,
+        },
+      };
+    }
   }
 
   return {

@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
+    "js-cookie": "^3.0.5",
     "next": "14.0.1",
     "next-auth": "^4.24.4",
+    "nookies": "^2.5.2",
     "react": "^18",
     "react-auth-code-input": "^3.2.1",
     "react-avatar": "^5.0.3",
     "react-dom": "^18",
-    "react-icons": "^4.11.0"
+    "react-icons": "^4.11.0",
+    "universal-cookie": "^6.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

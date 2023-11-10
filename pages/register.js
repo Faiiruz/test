@@ -108,13 +108,13 @@ export default function Register() {
               </button>
             </form>
             <div className="flex flex-col">
-              <button
-                onClick={() => signIn("google")}
-                className="flex flex-row  items-center justify-center rounded-full px-12 py-2 mb-5 bg-gradient-to-t from-[#172882] to-sky-400 text-white mt-2"
-              >
-                <FaGoogle className="mr-2" />
-                Register with Google
-              </button>
+            <button
+              onClick={handleGoogleLogin}
+              className="flex flex-row items-center justify-center rounded-full px-12 py-2 mb-5 bg-gradient-to-t from-[#172882] to-sky-400 text-white mt-2"
+            >
+              <FaGoogle className="mr-2" />
+              Register with Google
+            </button>
               <div className="text-sm text-center font-5 font-popin">
                 Have an Account?{" "}
                 <Link

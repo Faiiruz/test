@@ -7,15 +7,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { signOut } from "next-auth/react";
+import { destroyCookie } from 'nookies';
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
 
   const handleLogout = async () => {
-    await signOut();
-    router.push("/login");
+    destroyCookie(null, 'token');
+    router.push('/login');
   };
 
   return (
