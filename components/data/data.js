@@ -3,7 +3,7 @@ export const emailPhising = [
     id: "1",
     date: "7/Nov/2023",
     email: "hotdaddy@yahoo.uk",
-    body: "lorem",
+    body: "loredawdsawdsawdagsyduaisgdiuagsdgiadgsaiuguasudhiuashduassadasdawdgysagjdahsjhiuhuasdashgdadhasdm",
     persen: "30%",
     status: "Phising Email",
   },

@@ -1,13 +1,15 @@
 import SEO from "@/components/SEO";
 import Layout from "@/components/Layout";
-import { getSession, signOut, useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 
 export default function Home() {
   return (
     <>
       <SEO title="Exuberance" />
       <Layout>
-        <div className="text-4xl font-popin font-semibold">Dashboard</div>
+        <div className="text-2xl md:text-4xl font-popin font-semibold">
+          Dashboard
+        </div>
       </Layout>
     </>
   );

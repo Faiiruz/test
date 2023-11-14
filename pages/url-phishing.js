@@ -4,10 +4,11 @@ import React, { useState } from "react";
 import { getSession } from "next-auth/react";
 import { urlPhising } from "@/components/data/data";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 export default function Url() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 4;
 
   const getStatusTextColor = (status) => {
     if (status === "Phising") {
@@ -31,14 +32,25 @@ export default function Url() {
   const goToNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
   };
+
+  const checkUrl = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "URL checked successfully!",
+    });
+  };
+
   return (
     <>
       <SEO title="Exuberance" />
       <Layout>
-        <div className="text-4xl font-popin font-semibold">Url Phising</div>
+        <div className="text-2xl md:text-4xl font-popin font-semibold">
+          Url Phising
+        </div>
         <div className="mt-7">
           <input
-            className="px-5 w-full py-5 border-slate-950 border bg-gray-200"
+            className="px-2 w-full py-2 text-sm md:text-base md:px-5 md:py-5 border-slate-950 border bg-gray-200"
             // name="url-bar"
             // cols={125}
             // rows={1}
@@ -48,14 +60,19 @@ export default function Url() {
           />
         </div>
         <div className="flex items-end justify-end mt-5">
-          <button className="flex flex-row items-center justify-center px-12 py-2 mb-5 bg-gradient-to-t from-[#172882]  to-sky-400  text-white hover:bg-[#172882] mt-2">
+          <button
+            onClick={checkUrl}
+            className="flex flex-row items-center justify-center px-10 md:px-12 py-2 text-sm md:text-base mb-5 bg-gradient-to-t from-[#172882]  to-sky-400  text-white hover:bg-[#172882] mt-2"
+          >
             Check URL
           </button>
         </div>
         <div className="flex justify-center items-center">
-          <div className="text-4xl font-popin font-semibold">Checked URLs</div>
+          <div className="text-2xl md:text-4xl font-popin font-semibold">
+            Checked URLs
+          </div>
         </div>
-        <div className="flex mt-4 justify-end">
+        <div className="flex text-sm md:text-base mt-4 justify-end">
           <button
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
@@ -74,8 +91,8 @@ export default function Url() {
             <AiOutlineRight />
           </button>
         </div>
-        <div className="flex justify-center items-center">
-          <table className="bg-white mt-5 w-full overflow-scroll">
+        <div className="flex text-sm md:text-base justify-center items-center">
+          <table className="bg-white mt-5 w-full">
             <thead>
               <tr className="text-left text-md text-slate-700">
                 <th className="py-2 px-4 border-b">URL</th>
@@ -84,7 +101,7 @@ export default function Url() {
             </thead>
             <tbody>
               {displayedApps.map((app) => (
-                <tr key={app.id} className="text-sm">
+                <tr key={app.id}>
                   <td className="py-2 px-4 border-b">{app.url}</td>
                   <td className="py-2 px-4 border-b ">
                     <i className={`${getStatusTextColor(app.status)}`}>

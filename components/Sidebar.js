@@ -5,28 +5,48 @@ import { TbWorldSearch } from "react-icons/tb";
 import { MdOutlineMarkunreadMailbox } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { destroyCookie } from 'nookies';
+import { destroyCookie } from "nookies";
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const router = useRouter();
 
   const handleLogout = async () => {
-    destroyCookie(null, 'token');
-    router.push('/login');
+    destroyCookie(null, "token");
+    router.push("/login");
   };
+
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+  };
+
+  // Add event listener for window resize
+  useEffect(() => {
+    handleResize(); // Set initial state based on window width
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener when component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div
       className={`${
         open ? "w-68" : "w-20"
-      }  h-screen bg-[#172882] duration-300 relative`}
+      }  min-h-screen bg-[#172882] duration-300 relative`}
     >
-      <div className="p-4 text-white">
+      <div className="p-4 text-white flex flex-col h-full">
         <IoIosArrowBack
-          className={`text-3xl bg-black rounded-full absolute -right-3 top-9 cursor-pointer duration-300 ${
+          size={30}
+          className={`text-3xl bg-black rounded-full absolute -right-3 top-6 md:top-9 cursor-pointer duration-300 ${
             !open && "rotate-180"
           }`}
           onClick={() => setOpen(!open)}
@@ -34,7 +54,7 @@ const Sidebar = () => {
         <div className="flex items-center justify-center mb-7">
           <Image src="/image/OIG1.png" width={100} height={100} />
         </div>
-        <ul className="space-y-2">
+        <ul className="space-y-2 flex-grow">
           <li>
             <Link
               href="/"
@@ -74,23 +94,23 @@ const Sidebar = () => {
             >
               <TbWorldSearch />
               <span className={`flex-1 ${!open && "hidden"}`}>
-                URL Phising Detector
+                URL Phishing Detector
               </span>
             </Link>
           </li>
-          <div>
-            <Link
-              onClick={handleLogout}
-              href="/login"
-              className={`flex gap-3 font-popin items-center p-2 rounded mt-[340px] ${
-                !open && "mr-4 mt-[420px]"
-              } `}
-            >
-              <BiLogOut />
-              <span className={`flex-1 ${!open && "hidden"}`}>Logout</span>
-            </Link>
-          </div>
         </ul>
+        <div>
+          <Link
+            onClick={handleLogout}
+            href="/login"
+            className={`flex gap-3 font-popin items-center p-2 rounded ${
+              !open && "mr-4 "
+            } `}
+          >
+            <BiLogOut />
+            <span className={`flex-1 ${!open && "hidden"}`}>Logout</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

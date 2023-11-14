@@ -23,10 +23,10 @@ export default function ChangePassword() {
       <SEO title="Exuberance" />
       <Layout>
         <Link href="/" className="font-popin text-sm flex items-center">
-          <BsArrowLeftShort />
+          <BsArrowLeftShort size={20} />
           <span>Back</span>
         </Link>
-        <div className="text-4xl font-popin font-semibold mt-10">
+        <div className="text-2xl md:text-4xl font-popin font-semibold mt-5 md:mt-10">
           Change Password
         </div>
         <form className="mt-4">
